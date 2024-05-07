@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "846794886378",
+    "firebase_url": "https://padpal-eb2fa-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "padpal-eb2fa",
+    "storage_bucket": "padpal-eb2fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846794886378:android:1571227fbed9674faedb93",
+        "android_client_info": {
+          "package_name": "com.example.padpal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsxmyVpMaY4iZrMqwKfovxV_PNFEYjTUw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
