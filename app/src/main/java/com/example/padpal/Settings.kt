@@ -37,7 +37,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
 @Composable
-fun SettingsScreen(username: String, onEditProfileClick: () -> Unit, onViewPastOrdersClick: () -> Unit, onLogoutClick: () -> Unit) {
+fun SettingsScreen(username: String, onEditProfileClick: () -> Unit, onViewPastOrdersClick: () -> Unit, onLogoutClick: () -> Unit,navController: NavHostController) {
     Column(modifier= Modifier
         .padding(26.dp)
         .fillMaxSize()) {
@@ -70,7 +70,8 @@ fun SettingsScreen(username: String, onEditProfileClick: () -> Unit, onViewPastO
 
 
             // Logout button
-            LogoutButton({}, modifier=Modifier.weight(0.7f))
+            LogoutButton({navController.navigate(Screens.Login.screen)}
+                , modifier=Modifier.weight(0.7f))
         }
         
 }}
@@ -167,13 +168,13 @@ fun ViewPastOrdersButton(onClick: () -> Unit, modifier: Modifier=Modifier) {
 }
 
 
-@Preview(showBackground=true)
-@Composable
-fun SettingsScreenPrev(){
-    SettingsScreen(
-        username = "John Doe",
-        onEditProfileClick = {},
-        onViewPastOrdersClick = {},
-        onLogoutClick = {}
-    )
-}
+//@Preview(showBackground=true)
+//@Composable
+//fun SettingsScreenPrev(){
+//    SettingsScreen(
+//        username = "John Doe",
+//        onEditProfileClick = {},
+//        onViewPastOrdersClick = {},
+//        onLogoutClick = {}, navController =
+//    )
+//}

@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 
 class ShoppingCartViewModel : ViewModel() {
     // Example: Array of items in the shopping cart
-    val items = mutableStateOf(arrayOf<Int>(0, 0, 0, 0, 0, 0))
+    val items = mutableStateOf(arrayOf<Int>(1, 1, 1, 1, 1, 1))
 
     fun addSmall() {
         val updatedItems = items.value.toMutableList()

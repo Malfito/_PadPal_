@@ -67,13 +67,13 @@ class SignupActivity : ComponentActivity() {
         }
 
 @Composable
-fun signupscreen() {
+fun signupscreen(navController: NavHostController) {
     Column(modifier= Modifier
         .fillMaxSize()
         .background(Color.White)) {
         LazyColumn{
-            item { DesignTop1()
-            DesignBottom1()}
+            item { DesignTop1(navController)
+            DesignBottom1(navController)}
 
         }
 
@@ -82,7 +82,7 @@ fun signupscreen() {
 
 
 @Composable
-fun DesignTop1(){
+fun DesignTop1(navController: NavHostController){
     Box(modifier= Modifier
         .navigationBarsPadding().wrapContentSize()
         .background(Color.Black)) {
@@ -109,7 +109,7 @@ fun DesignTop1(){
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DesignBottom1() {
+fun DesignBottom1(navController: NavHostController) {
     var passwordVisible by remember { mutableStateOf(false) }
 
     Column(modifier= Modifier
@@ -136,13 +136,14 @@ fun DesignBottom1() {
             val password = textState2
 
             // Call the sign-up function with email and password
-            signUpWithEmailAndPassword(email, password)
-
+//            signUpWithEmailAndPassword(email, password)
+            navController.navigate(Screens.Dashboard.screen){popUpTo(0)}
 
         }
 
         val onSigninClick: ()-> Unit = {
 
+            navController.navigate(Screens.Login.screen)
             //create account pr click krne pr kya dikhega
 
 
@@ -309,11 +310,7 @@ fun MetaSignupButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
 }
 
 @Preview(showBackground = true)
-@Composable
-fun GreetingPreview2() {
-    signupscreen()
 
-}
 private fun signUpWithEmailAndPassword(email: String, password: String) {
     val auth = FirebaseAuth.getInstance()
     auth.createUserWithEmailAndPassword(email, password)

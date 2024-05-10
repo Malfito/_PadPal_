@@ -2,15 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="Loginprev">
-        <State />
-      </entry>
-      <entry key="PreviewDashboardScreen">
-        <State />
-      </entry>
-      <entry key="ShoppingCartPrev">
-        <State />
-      </entry>
       <entry key="app">
         <State />
       </entry>

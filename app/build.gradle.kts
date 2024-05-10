@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.padpal"
-        minSdk = 24
+        minSdk = 25
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -65,6 +65,7 @@ dependencies {
     implementation("dev.shreyaspatil.EasyUpiPayment:EasyUpiPayment:3.0.3")
     implementation(libs.firebase.auth.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.compose.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -72,4 +73,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //mavigation k liye dependency
+    implementation("androidx.navigation:navigation-compose:2.5.0-rc01")
 }

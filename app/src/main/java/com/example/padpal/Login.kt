@@ -58,6 +58,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -91,20 +92,20 @@ class LoginActivity : ComponentActivity() {
 
 
 @Composable
-fun loginscreen() {
+fun loginscreen(navController: NavHostController) {
     Column(modifier= Modifier
         .fillMaxSize()
         .background(Color.White)) {
         LazyColumn{
-            item { DesignTop()
-                DesignBottom() }
+            item { DesignTop(navController)
+                DesignBottom(navController) }
         }
 
     }
 }
 
 @Composable
-fun DesignTop(){
+fun DesignTop(navController: NavHostController){
     Box(modifier= Modifier
         .navigationBarsPadding()
         .background(Color.White), contentAlignment= Alignment.Center) {
@@ -142,7 +143,7 @@ fun DesignTop(){
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DesignBottom(){
+fun DesignBottom(navController: NavHostController){
     val auth = FirebaseAuth.getInstance()
     val context = LocalContext.current
 
@@ -180,6 +181,7 @@ fun DesignBottom(){
                             if (user != null) {
                                 authResult = AuthResult.Success(user)
                                 Toast.makeText(context, "Logged in", Toast.LENGTH_SHORT).show()
+                                navController.navigate(Screens.Dashboard.screen)
 
                             } else {
                                 // Handle the case where the user is null
@@ -202,7 +204,7 @@ fun DesignBottom(){
 
 
         val onCreateAccountClick: ()-> Unit = {
-
+            navController.navigate(Screens.SignUp.screen)
 
 
         }
@@ -263,7 +265,7 @@ fun DesignBottom(){
 
         Spacer(modifier = Modifier.padding(13.dp))
 
-        LoginButton (onClick = onLoginClick)
+        LoginButton (onClick = onLoginClick,)
 
         Spacer(modifier = Modifier.padding(8.dp))
 
@@ -291,6 +293,7 @@ fun CreateAccountText(onCreateAccountClick: () -> Unit) {
     ClickableText(
         text = AnnotatedString("Don't have an account? Create one now"),
         onClick = {
+            onCreateAccountClick()
             textColor = Color.Black// Change text color on click
 
         },
@@ -328,6 +331,7 @@ fun LoginButton(onClick: () -> Unit) {
 @Preview(showBackground = true, name = "loginprev")
 @Composable
 fun Loginprev(){
-    loginscreen()
+    val navController  = rememberNavController()
+    loginscreen(navController)
 }
 
